@@ -19,35 +19,7 @@ categories: 大数据
 docker pull docker.elastic.co/elasticsearch/elasticsearch:6.4.2
 ```
 
-#### 2. 配置文件
-
-**es-master.yml**
-
-```yacas
-cluster.name: elasticsearch_cluster
-node.name: node-master
-node.master: true
-node.data: true
-http.port: 9200
-network.host: 0.0.0.0
-network.publish_host: 10.2.201.138
-discovery.zen.ping.unicast.hosts: ["10.2.201.138"]
-```
-
-**es-slave.yml**
-
-```yaml
-cluster.name: elasticsearch_cluster
-node.name: node-data
-node.master: false
-node.data: true
-http.port: 9201
-network.host: 0.0.0.0
-network.publish_host: 10.2.201.138
-discovery.zen.ping.unicast.hosts: ["10.2.201.138"]
-```
-
-#### 3. 启动
+#### 2. 启动
 
 启动master节点：
 
@@ -74,21 +46,21 @@ docker run -d -p 9211:9200 -p 9311:9300 --link elas1  --name elas2 -e cluster.na
 
 
 
-#### 4. 验证
+#### 3. 验证
 
-##### 4.1、检查节点状态
+##### 3.1、检查节点状态
 
 ```bash
 http://localhost:9211/
 ```
 
-##### 4.2、检查集群状态
+##### 3.2、检查集群状态
 
 ```bash
 http://localhost:9200/_cat/health?v
 ```
 
-#### 5. 监控
+#### 4. 监控
 
 **使用官方提供的Kibana，以docker方式安装:**
 
