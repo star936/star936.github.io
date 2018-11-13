@@ -283,10 +283,12 @@ GET /megacorp/employee/_search
 # 格式：/{index}/_mapping/{type};其中index：指存储文档的index； type：指文档的类型。
 PUT /megacorp/_mapping/employee
 {
+  "properties": {
     "interests": {
-        "type": "text",
-        "fielddata": true
+      "type": "text",
+      "fielddata": true
     }
+  }
 }
 ```
 
