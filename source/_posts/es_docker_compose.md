@@ -1,5 +1,5 @@
 ---
-title: 使用dokcer-compose编排Elasticsearch服务
+title: Elasticsearch(二)使用dokcer-compose编排Elasticsearch服务
 date: 2018-11-05 14:54:28
 tags: Elasticsearch
 categories: 大数据

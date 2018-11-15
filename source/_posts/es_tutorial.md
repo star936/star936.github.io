@@ -1,5 +1,5 @@
 ---
-title: Elasticsearch基础入门
+title: Elasticsearch(三)基础入门
 date: 2018-11-14 21:11:28
 tags: Elasticsearch
 categories: 大数据

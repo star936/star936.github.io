@@ -1,5 +1,5 @@
 ---
-title: Elasticsearch 6 Docker 集群部署—单机多容器实例
+title: Elasticsearch(一) Docker 集群部署—单机多容器实例
 date: 2018-11-05 13:54:28
 tags: Elasticsearch
 categories: 大数据
