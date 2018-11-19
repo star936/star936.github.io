@@ -1,8 +1,9 @@
 ---
 title: Elasticsearch(三)入门使用-索引与映射
-date: 2018-11-14 21:11:28
+date: 2018-11-15 21:11:28
 tags: Elasticsearch
 categories: 大数据
+toc: true
 ---
 
 > Elasticsearch: 6.4.2
