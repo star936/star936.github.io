@@ -1,277 +1,281 @@
 ---
-title: Elasticsearch(三)基础入门
+title: Elasticsearch(三)入门使用-索引与映射
 date: 2018-11-14 21:11:28
 tags: Elasticsearch
 categories: 大数据
 ---
 
-> 本文参照[Elasticsearch: 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
+> Elasticsearch: 6.4.2
 
-##### 1. 基本概念
+#### 1. 索引
 
-索引(名词)：一个`索引`类似于关系型数据库中的的一张表，是一个存储关系型文档的地方。它的复数词为`indices`或`indexes`.
+*索引是Elasticsearch中存储数据的一种逻辑结构。与关系型数据库对比：索引index类似于表，文档document类似于表中的行，字段field类似于表中的列，映射mapping类似于schema。索引是有分片组成的，可以分散到集群的多个节点中；分片实际上是Lucene的索引。*
 
-索引(动词)：`索引`一个文档就是存储一个文档到一个`索引(名词)`中以便它可以被检索和查询到。
+*在Elasticsearch6.x中一个索引只能包含一种类型的文档。*
 
-倒排索引：关系型数据库通过增加一个 *索引* 比如一个 B树（B-tree）索引 到指定的列上，以便提升数据检索速度。Elasticsearch 和 Lucene 使用了一个叫做 *倒排索引* 的结构来达到相同的目的。
+##### 1.1 索引操作
 
-##### 2. 基础操作
-
-###### 2.1、索引文档
-
-**文档类型为`employee`类型，该类型位于索引`megacorp`内。**
+创建Index
 
 ```bash
-PUT /megacorp/employee/1
+PUT /twitter
+```
+
+获取Index
+
+```bash
+GET /twitter
+```
+
+删除Index
+
+```bash
+DELETE /twitter
+```
+
+Index是否存在
+
+```bash
+HEAD /twitter
+```
+
+打开/关闭Index
+
+```bash
+POST /twitter/_close
+POST /twitter/_open
+```
+
+##### 1.2 索引别名
+
+*索引别名是一个或多个缩影的另外一个名字。每个别名可以对应多个索引，每个索引也可以有多个别名。例如：我们将每天的日志创建一个索引，所有这些日志可以有有一个统一的索引名`log`；另外我们还可以将每年的日志的索引名再统一到一起起个别名`log2018`。*
+
+**不能使用已存在的索引名字作为别名。**
+
+创建别名
+
+```bash
+POST /_aliases
 {
-    "first_name" : "John",
-    "last_name" :  "Smith",
-    "age" :        25,
-    "about" :      "I love to go rock climbing",
-    "interests": [ "sports", "music" ]
+    "actions" : [
+        { "add" : { "index" : "test1", "alias" : "alias1" } }
+    ]
 }
 ```
 
-*结果：*
+将索引从一个别名中删除
 
-```json
+```bash
+POST /_aliases
 {
-    "_index": "megacorp",
-    "_type": "employee",
-    "_id": "1",
-    "_version": 1,
-    "result": "created",
-    "_shards": {
-        "total": 2,
-        "successful": 2,
-        "failed": 0
-    },
-    "_seq_no": 0,
-    "_primary_term": 1
+    "actions" : [
+        { "remove" : { "index" : "test1", "alias" : "alias1" } }
+    ]
 }
 ```
 
-
-
-###### 2.2、检索文档
-
-**执行`GET`请求并指定文档的地址——索引库、类型和ID。**
+获取所有别名
 
 ```bash
-GET /megacorp/employee/1
+GET /_aliases
 ```
 
-*结果：*
+过滤别名
 
-```json
+*Elasticsearch支持以类似SQL数据中使用视图的方式使用别名。用户可以使用完整的查询DSL，并将查询应用在基于查询的统计、搜索、删除等操作上。*
+
+*确保在映射中已存在该字段。*
+
+```bash
+# 创建能够为客户12345返回数据的别名，则当使用该别名时，所有操作返回文档的clientId字段的值都是12345
+POST /_aliases
 {
-    "_index": "megacorp",
-    "_type": "employee",
-    "_id": "1",
-    "_version": 1,
-    "found": true,
-    "_source": {
-        "first_name": "John",
-        "last_name": "Smith",
-        "age": 25,
-        "about": "I love to go rock climbing",
-        "interests": [
-            "sports",
-            "music"
-        ]
-    }
-}
-```
-
-###### 2.3、轻量搜索
-
-**搜索所有的雇员信息**
-
-```bash
-GET /megacorp/employee/_search
-```
-
-**另外，可以使用一个高亮搜索，该方法涉及到一个查询字符串搜索，例如：**
-
-查询last_name为Smith的雇员
-
-```bash
-GET /megacorp/employee/_search?q=last_name:Smith
-```
-
-###### 2.4、使用查询表达式搜索
-
-*查询last_name为Smith的雇员*
-
-```bash
-GET /megacorp/employee/_search
-{
-    "query" : {
-        "match" : {
-            "last_name" : "Smith"
-        }
-    }
-}
-```
-
-*更加复杂的搜索：搜索last_name为Smith，同时年龄大于30岁的雇员。使用到filter过滤器*
-
-```bash
-GET /megacorp/employee/_search
-{
-    "query" : {
-        "bool": {
-            "must": {
-                "match" : {
-                    "last_name" : "smith" 
-                }
-            },
-            "filter": {
-                "range" : {
-                    "age" : { "gt" : 30 } 
-                }
+    "actions" : [
+        {
+            "add" : {
+                 "index" : "data",
+                 "alias" : "client",
+                 "filter" : { "term" : { "clientId" : "12345" } }
             }
         }
-    }
+    ]
 }
 ```
 
-###### 2.5、全文搜索
+别名和路由选择
 
-*搜索所有喜欢rock climbing的雇员*
+*对于命名为client的索引别名，使用12345、12346、12347作为路由值用于索引，并仅将12345用于查询*
 
 ```bash
-GET /megacorp/employee/_search
+POST /_aliases
 {
-    "query" : {
-        "match" : {
-            "about" : "rock climbing"
-        }
-    }
-}
-```
-
-*结果：*
-
-**Elasticsearch默认按照相关性得分排序，即每个文档跟查询的匹配度.**
-
-```json
-{
-    "took": 19,
-    "timed_out": false,
-    "_shards": {
-        "total": 5,
-        "successful": 5,
-        "skipped": 0,
-        "failed": 0
-    },
-    "hits": {
-        "total": 2,
-        "max_score": 0.5753642,
-        "hits": [
-            {
-                "_index": "megacorp",
-                "_type": "employee",
-                "_id": "1",
-                "_score": 0.5753642,
-                "_source": {
-                    "first_name": "John",
-                    "last_name": "Smith",
-                    "age": 25,
-                    "about": "I love to go rock climbing",
-                    "interests": [
-                        "sports",
-                        "music"
-                    ]
-                }
-            },
-            {
-                "_index": "megacorp",
-                "_type": "employee",
-                "_id": "2",
-                "_score": 0.2876821,
-                "_source": {
-                    "first_name": "Jane",
-                    "last_name": "Smith",
-                    "age": 32,
-                    "about": "I like to collect rock albums",
-                    "interests": [
-                        "music"
-                    ]
-                }
+    "actions" : [
+        {
+            "add" : {
+                 "index" : "data",
+                 "alias" : "client",
+                 "index_routing" : "12345,12346,12347",
+                 "search_routing": "12345"
             }
-        ]
-    }
+        }
+    ]
 }
 ```
 
-###### 2.6、短语搜索
-
-*搜索同时匹配`rock`和`climbing`并且二者以短语`rock climbing`形式紧挨着的雇员记录*
+*当使用client别名对数据进行索引时，index_routing属性指定的值将被使用；当进行查询时，search_routing属性指定的值被使用*
 
 ```bash
-GET /megacorp/employee/_search
-{
-    "query" : {
-        "match_phrase" : {
-            "about" : "rock climbing"
-        }
-    }
-}
+# search_routing和查询中routing参数的共同值12345作为路由值
+GET /client/_search?q=test&routing=99999,12345
 ```
 
-###### 2.7、高亮搜索
 
-*在每个搜索结果中高亮部分文本片段，以便让用户知道为何该文档符合查询条件.*
 
-```bash
-GET /megacorp/employee/_search
-{
-    "query" : {
-        "match_phrase" : {
-            "about" : "rock climbing"
-        }
-    },
-    "highlight": {
-        "fields" : {
-            "about" : {}
-        }
-    }
-}
-```
+#### 2.  映射
 
-###### 2.8、分析---聚合
+##### 2.1 映射操作
 
-*最受欢迎的兴趣爱好：*
+*映射Mapping用于定义索引Index的结构。*
+
+> 6.0版本之后_all可能不再支持，因此最好使用copy_to
+
+
+
+**copy_to**: 允许创建定制的_all字段，将多个字段的值拷贝到查询时被当作单一字段使用的一组字段中。
+
+**_source**: 包含文本被索引阶段的原始JSON文档内容，它不能被索引，因此也不能被搜索，只在fetch请求时返回数据。
+
+创建或更新Mapping
 
 ```bash
-GET /megacorp/employee/_search
+PUT /twitter/_mapping/_doc 
 {
-  "aggs": {
-    "all_interests": {
-      "terms": { "field": "interests" }
+  "properties": {
+    "email": {
+      "type": "keyword"
     }
   }
 }
 ```
 
-*聚合还支持分级汇总。比如：查询特定兴趣爱好员工的平均年龄：*
+获取Mapping
 
 ```bash
-GET /megacorp/employee/_search
+GET /twitter/_mapping/_doc
+# 类型为_doc的所有索引的映射
+GET /_mapping/_doc
+GET /_all/_mapping/_doc
+# 所有索引所有类型的映射
+GET /_all/_mapping
+GET /_mapping
+```
+
+获取某字段的Mapping
+
+```bash
+GET /twitter/_mapping/_doc/field/email
+```
+
+##### 2.2 分析器
+
+**通常情况下索引和搜索时应该使用相同的分析器，针对使用分析器搜索特定字段，查找顺序如下：**
+
+* 当前查询语句中指定的分析器
+* 映射中`search_analyzer`参数定义的分析器
+* 映射中`analyzer`参数定义的分析器
+* 在索引settings部分`default_search`参数定义的分析器
+* 在索引settings部分`default`参数定义的分析器
+* 标准分析器
+
+*自定义分析器时需要在映射中添加一个settings部分，它保存创建索引时所需的信息。需要：*
+
+* 零个或多个字符过滤器
+* 一个分词器
+* 零个或多个词过滤器
+
+```bash
+PUT my_index
 {
-    "aggs" : {
-        "all_interests" : {
-            "terms" : { "field" : "interests" },
-            "aggs" : {
-                "avg_age" : {
-                    "avg" : { "field" : "age" }
-                }
-            }
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_custom_analyzer": {
+          "type":      "custom", 
+          "tokenizer": "standard",
+          "char_filter": [
+            "html_strip"
+          ],
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
         }
+      }
     }
+  }
+}
+
+```
+
+##### 2.3 动态映射和模版
+
+*Elasticsearch最重要的特性之一就是动态映射，你不要先创建索引、定义映射，可以直接索引一个文档，此时elasticsearch自动帮你做这些工作。*
+
+*每一个模版定义了一个模式，用来与新建索引的名称进行比较；如果匹配则模版中定义的值被复制到索引结构的定义中。如果有多个模版匹配上了新建索引名称，所有模版都会被应用，并且后应用的模版会覆盖先应用的模版。其中的order参数可以控制模版的预期使用顺序。*
+
+```bash
+PUT my_index
+{
+  "mappings": {
+    "_doc": {
+      "dynamic_templates": [
+        {
+          "longs_as_strings": {
+            "match_mapping_type": "string",
+            "match":   "long_*",
+            "unmatch": "*_text",
+            "mapping": {
+              "type": "long"
+            }
+          }
+        }
+      ]
+    }
+  }
 }
 ```
+
+##### 2.4 路由
+
+**怎么索引和搜索**
+
+*默认情况下，elasticsearch计算文档ID的hash值及`hash值%主分片数`的值,基于后者的值将文档放到某个可用的主分片中，然后复制到副分片。*
+
+*搜索时将请求分发到索引的所有分片中，然后在每一个分片中根据条件查找文档并传递给某一个节点，该节点进行全局的过滤和排序等，并将最终结果返回给客户端。*
+
+路由选择可以控制文档和查询被转发到某一个特定的分片上。既可以在索引和搜索请求时使用routing参数，也可以在类型定义时使用_routing参数。
+
+```bash
+PUT /twitter/_doc/1?routing=kimchy
+{
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elasticsearch"
+}
+
+PUT my_index2
+{
+  "mappings": {
+    "_doc": {
+      "_routing": {
+        "required": true,
+        "path": "id"
+      }
+    }
+  }
+}
+```
+
 
 **可能发生的错误：`Fielddata is disabled on text fields by default`**.
 
