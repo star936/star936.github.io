@@ -1,5 +1,5 @@
 ---
-title: 使用Psycopg2高效更新数据
+title: 使用Psycopg2高效更新数据(一)
 date: 2018-11-30 20:56:28
 tags: [Python, Psycopg2]
 categories: python
