@@ -41,7 +41,7 @@ print(odo(example('iris.csv'), 'sqlite:///myfile.db::iris'))
   * `.csv`
   * `.json`
   * `.csv.gz/json.gz`
-    * `.hdf5`(使用h5py)
+  * `.hdf5`(使用h5py)
   * `.hdf5::/datapath`
   * `hdfstore://filename.hdf5`(使用pandas.HDFStore格式)
   * `.bcolz`
