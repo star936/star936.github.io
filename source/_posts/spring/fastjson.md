@@ -86,3 +86,13 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 
 **在`name`的setter方法上使用@JSONField(name="user_name"),在getter方法上使用@JSONField(name="contract_name").**
 
+#### 4. 循环引用
+**情景:**
+*例如: 存在用户-订单的一对多关系,如果查询每个订单的时候都要返回用户信息.*
+*查询所用订单信息时,使用Mybatis的@One注解,此时查询出来的结果使用fastjson序列化后结果中存在大量的类似`"$ref": "$[0]"`的信息.*
+**问题分析:**
+*在查询时,当多个订单的用户是同一个人时,都指向的是内存中的同一个用户对象,而fastjson默认开启循环引用检测,因此结果中会出现上述描述的情形.*
+**解决方法:**
+```java
+JSON.toJSONString(object, SerializerFeature.DisableCircularReferenceDetect);
+```
