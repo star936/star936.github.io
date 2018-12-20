@@ -1,4 +1,10 @@
-### 使用Docker打包SpringBoot并Push到DockerHub
+---
+title: 使用Docker打包SpringBoot并Push到DockerHub
+date: 2018-12-20 23:20:28
+tags: [SpringBoot, Docker]
+categories: Spring
+toc: true
+---
 
 > SpringBoot: 2.1.1
 > com.spotify.dockerfile-maven-plugin: 1.4.8
