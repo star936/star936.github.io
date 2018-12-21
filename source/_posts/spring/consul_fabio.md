@@ -113,7 +113,7 @@ docker run --name rest_api --net=host -t star936/rest-api-mybatis:0.0.1
 ![图1](consul_fabio/1.png)
 
 #### 4.2 请求
-**向 http://localhost:9999/rest/user/1 发送请求,如果返回数据,则表示成功.**
+**向 http://localhost:9999/rest/{controller的URL} 发送请求,如果返回数据,则表示成功.**
 
 
 

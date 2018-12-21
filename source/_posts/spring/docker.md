@@ -146,6 +146,4 @@ ENTRYPOINT ["java","-jar","target/app.jar"]
 </servers>
 ```
 ##### 2.2 Push
-**参照下图:**
-![图3](docker/3.png)
-**选中`Plugins->dockerfile->dockerfile:push`并运行.**
+**参照上图选中`Plugins->dockerfile->dockerfile:push`并运行.**
