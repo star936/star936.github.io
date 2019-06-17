@@ -1,3 +1,21 @@
+language: node_js
+branches:
+  only:
+  - hexo #源码分支名称
+before_install:
+- npm install -g hexo
+- npm install -g hexo-cli
+before_script:
+- git config --global user.name 'star936'
+- git config --global user.email '1542938982@qq.com'
+- sed -i'' "s~git@github.com:star936/star936.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@star936/star936.github.io.git~" _config.yml
+install:
+- npm install
+script:
+- hexo clean
+- hexo generate
+after_success:
+- hexo deploy
 env:
   global:
     secure: kcGANJU7bMioIkslNZ3L6OvM9tnC8EMlr+8yiK7EAKAFyVhMMtpD7epKIl8mY9IpnUkJ/Q6JV3w09cSKoRP+52K7osjyvvsRfrtHsZ1aYYrOiYe9KZWvHMXOItgj+Gak3HdHGwtA/ZIS1hDzq1prvCyAn+qHcRw9CRLdJs8BEyjlL8B7vyzf5wEl5bYrLNm6jF8dp80EuzgIsAZTLCYS8r12GVlJcE0U747b7Y1I56sxwxOlw5RB7zvIHCZ+uXOuKr1akhFzIbGPix5zi6tZVY0DUbH81Kil9OreKrgJWwMoq2IZXr2otGRcWcNmQvgsNzsoY713t4ce9F5dq+7yWyVUymFn5+u1N4fr2tp/2CPIlzh/Lvw1aB7NoKKcJdpJr9nUguay/0V23Rudw41FQulbiisEsGMcEOSjJCXwpQ77YD3cjHBd15q2VevTQBmoxdVHH483F+SPYA9sQik8DtjkOr9nU8RlXJ+aM1wRyTNFqsYDYIKEJk9v9Rkfz1kyklJQa/hYvjPdSrl3gssvhQwjC7LhlXbINJIP7OSM7cqjACGj9B4/XXlF5mCeTZ1TudSe8A4kKk2NzEyF2ehrfS6C+rIFW57+PmhpELFwS2B4o5ySGmHAXLZZgNaXCwd3KyE5qze025kQWZLh+2Es8N1Yz3RRFoxnmuPIBEiyk7g=
