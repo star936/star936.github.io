@@ -39,28 +39,43 @@ categories: 随笔
 **向`.travis.yml`文件添加内容,完整内容示例如下:**
 
 ```yaml
+# 指定语言环境
 language: node_js
+# 指定需要sudo权限
+sudo: required
+# 指定node_js版本
 node_js: stable
-branches:
-  only:
-    - hexo #源码分支名称
+# 指定缓存模块，可选。缓存可加快编译速度。
 cache:
   directories:
     - node_modules
+
+# 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
+branches:
+  only:
+    - hexo 
+
 before_install:
   - npm install -g hexo-cli
-  - npm install hexo-deployer-git --save
-before_script:
-  - git config --global user.name '<GitHub用户名>'
-  - git config --global user.email '<GitHub邮箱>'
-  - sed -i'' "s~git@github.com:<GitHub用户名>/<GitHub用户名>.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@<GitHub用户名>/<GitHub用户名>.github.io.git~" _config.yml
+
+# Start: Build Lifecycle
 install:
   - npm install
+  - npm install hexo-deployer-git --save
+
+# 执行清缓存，生成网页操作
 script:
   - hexo clean
-  - hexo g
-after_success:
-  - hexo d
+  - hexo generate
+
+# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
+after_script:
+  - git config user.name "star936"
+  - git config user.email "1542938982@qq.com"
+  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
+  - sed -i "s/gh_token/${REPO_TOKEN}/g" ./_config.yml
+  - hexo deploy
+# End: Build LifeCycle
 env:
   global:
     secure: <加密后的内容>
