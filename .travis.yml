@@ -4,34 +4,28 @@ language: node_js
 sudo: required
 # 指定node_js版本
 node_js: stable
-# 指定缓存模块，可选。缓存可加快编译速度。
-cache:
-  directories:
-    - node_modules
-
-# 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
+git:
+  submodules: false
+install:
+  - npm install hexo-cli -g
+  - npm install
+before_script:
+  - export TZ='Asia/Shanghai'
+  - sed -i'' "s~${GITHUB_THEME_URL}~${GITLAB_THEME_URL}~" .gitmodules # 主题改成self branch
+  - rm -rf themes/hexo-theme-matery/*
+  - git submodule update --init --recursive
+  - cp themes/_config.yml themes/hexo-theme-matery/_config.yml #拷贝个人主题配置
+script:
+  - hexo clean && hexo g
+after_script:
+  - git config --global user.name "star936"
+  - git config --global user.email "1542938982@qq.com"
+  - git clone -b master https://${GH_REF} .deploy_git # clone 现在的线上以延续tree
+  - sed -i'' "s~${GH_REF}~${GH_TOKEN}:x-oauth-basic@${GH_REF}~" _config.yml #将配置中的地址改成github api地址
 branches:
   only:
-    - hexo 
-
-before_install:
-  - npm install -g hexo-cli
-
-# Start: Build Lifecycle
-install:
-  - npm install
-  - npm install hexo-deployer-git --save
-
-# 执行清缓存，生成网页操作
-script:
-  - hexo clean
-  - hexo generate
-
-# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
-after_script:
-  - git config user.name "star936"
-  - git config user.email "1542938982@qq.com"
-  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
-  - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
-  - hexo deploy
-# End: Build LifeCycle
+  - hexo
+env:
+  global:
+    - GH_REF: git@github.com:star936/star936.github.io.git
+    - GITHUB_THEME_URL: https://github.com/star936/hexo-theme-matery.git
