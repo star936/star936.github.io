@@ -44,9 +44,12 @@ node_js: stable
 branches:
   only:
     - hexo #源码分支名称
+cache:
+  directories:
+    - node_modules
 before_install:
-  - npm install -g hexo
   - npm install -g hexo-cli
+  - npm install hexo-deployer-git --save
 before_script:
   - git config --global user.name '<GitHub用户名>'
   - git config --global user.email '<GitHub邮箱>'
@@ -55,9 +58,9 @@ install:
   - npm install
 script:
   - hexo clean
-  - hexo generate
+  - hexo g
 after_success:
-  - hexo deploy
+  - hexo d
 env:
   global:
     secure: <加密后的内容>
