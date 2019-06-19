@@ -6,26 +6,19 @@ sudo: required
 node_js: stable
 git:
   submodules: false
+before_install:
+  - npm install -g hexo-cli
 install:
-  - npm install hexo-cli -g
   - npm install
-before_script:
-  - export TZ='Asia/Shanghai'
-  - sed -i'' "s~${GITHUB_THEME_URL}~${GITLAB_THEME_URL}~" .gitmodules # 主题改成self branch
-  - rm -rf themes/hexo-theme-matery/*
-  - git submodule update --init --recursive
-  - cp themes/_config.yml themes/hexo-theme-matery/_config.yml #拷贝个人主题配置
 script:
-  - hexo clean && hexo g
-after_script:
+  - git submodule init
+  - git submodule update
+  - hexo generate
+after_success:
   - git config --global user.name "star936"
   - git config --global user.email "1542938982@qq.com"
-  - git clone -b master https://${GH_REF} .deploy_git # clone 现在的线上以延续tree
-  - sed -i'' "s~${GH_REF}~${GH_TOKEN}:x-oauth-basic@${GH_REF}~" _config.yml #将配置中的地址改成github api地址
+  - sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
+  - hexo deploy
 branches:
   only:
   - hexo
-env:
-  global:
-    - GH_REF: git@github.com:star936/star936.github.io.git
-    - GITHUB_THEME_URL: https://github.com/star936/hexo-theme-matery.git
