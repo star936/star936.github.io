@@ -24,7 +24,7 @@ categories: 随笔
 
 3. 拷贝GitHub Token,并使用如下命令对其进行加密:
    ```bash
-   travis encrypt 'REPO_TOKEN=<GitHub Token>' --add
+   travis encrypt 'GH_TOKEN=<GitHub Token>' --add
    ```
    此时在`.travis.yml`中存在如下内容:
    
@@ -36,6 +36,15 @@ categories: 随笔
 
 ## 3. Hexo集成Travis CI
 
+**修改博客项目根目录下的`_config.yml`文件，修改内容如下：**
+
+```yaml
+deploy:
+  type: git
+  repo: https://github.com/star936/star936.github.io.git  # 修改为自己的
+  branch: master
+```
+
 **向`.travis.yml`文件添加内容,完整内容示例如下:**
 
 ```yaml
@@ -45,37 +54,24 @@ language: node_js
 sudo: required
 # 指定node_js版本
 node_js: stable
-# 指定缓存模块，可选。缓存可加快编译速度。
-cache:
-  directories:
-    - node_modules
-
-# 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
-branches:
-  only:
-    - hexo 
-
+git:
+  submodules: false
 before_install:
   - npm install -g hexo-cli
-
-# Start: Build Lifecycle
 install:
   - npm install
-  - npm install hexo-deployer-git --save
-
-# 执行清缓存，生成网页操作
 script:
-  - hexo clean
+  - git submodule init
+  - git submodule update
   - hexo generate
-
-# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
-after_script:
-  - git config user.name "<GitHub用户名>"
-  - git config user.email "<GitHub邮箱>"
-  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
-  - sed -i "s/gh_token/${REPO_TOKEN}/g" ./_config.yml
+after_success:
+  - git config --global user.name "<GitHub用户名>"
+  - git config --global user.email "<GitHub邮箱>"
+  - sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
   - hexo deploy
-# End: Build LifeCycle
+branches:
+  only:
+  - hexo
 env:
   global:
     secure: <加密后的内容>
