@@ -1,5 +1,5 @@
 ---
-title: PySpark(二): 在IPython Notebook上使用Spark
+title: PySpark(二) 在IPython Notebook上使用Spark
 date: 2019-08-22 22:22:22
 tags: PySpark
 categories: PySpark

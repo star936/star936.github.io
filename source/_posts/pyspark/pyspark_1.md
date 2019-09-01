@@ -1,5 +1,5 @@
 ---
-title: PySpark(一): Hadoop SingleNode部署下Spark on yarn
+title: PySpark(一) Hadoop SingleNode部署下Spark on yarn
 date: 2019-08-21 23:24:28
 tags: PySpark
 categories: PySpark
