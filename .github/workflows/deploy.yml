@@ -13,28 +13,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        with:
+          ref: hexo
 
       - name: Use Node.js 8.x
         uses: actions/setup-node@v1
         with:
           node-version: 8.x
 
-      - name: Install dependencies
+      - name: Setup hexo
+        env:
+          ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
         run: |
+          mkdir -p ~/.ssh/
+          echo "$ACCESS_TOKEN_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name "star936"
+          git config --global user.email "1542938982@qq.com"
           npm install hexo-cli -g
           npm install
 
-      - name: Generate public files
-        run: |
+      - name: Clean & Generate & Deploy
           hexo clean
-          hexo generate  
-
-      - name: Deploy
-        env:
-          GH_REF: github.com/star936/star936.github.io.git
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          git config --global user.name "star936"
-          git config --global user.email "1542938982@qq.com"
-          # sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
+          hexo generate 
           hexo deploy
