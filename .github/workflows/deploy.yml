@@ -36,5 +36,5 @@ jobs:
         run: |
           git config --global user.name "star936"
           git config --global user.email "1542938982@qq.com"
-          sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
+          # sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
           hexo deploy
