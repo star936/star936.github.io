@@ -1,35 +1,20 @@
 name: Hexo Deploy
-
 on:
   push:
     branches:
       - hexo
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v1
-        with:
-          ref: hexo
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          version: ${{ matrix.node_version }}
-      - name: Setup hexo
-        env:
-          ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$ACCESS_TOKEN_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.email "1542938982@qq.com"
-          git config --global user.name "star936"
-          npm install hexo-cli -g
-          npm install
-      - name: Hexo deploy
-        run: |
-          hexo clean
-          hexo d
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: dev
+        BRANCH: master
+        FOLDER: public
+        BUILD_SCRIPT: npm i -g hexo && npm install && hexo generate
