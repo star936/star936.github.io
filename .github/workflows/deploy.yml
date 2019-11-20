@@ -1,0 +1,40 @@
+name: Hexo Deploy
+
+on: # 触发条件
+  push:
+    branches:
+      - hexo # 向hexo分支push时触发
+
+jobs:
+  build:
+    name: Build and publish 
+    runs-on: ubuntu-latest # 运行环境
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 8.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 8.x
+
+      - name: Install dependencies
+        run: |
+          npm install hexo-cli -g
+          npm install
+
+      - name: Generate public files
+        run: |
+          hexo clean
+          hexo generate  
+
+      - name: Deploy
+        env:
+          GH_REF: github.com/star936/star936.github.io.git
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name "star936"
+          git config --global user.email "1542938982@qq.com"
+          sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
+          hexo deploy
