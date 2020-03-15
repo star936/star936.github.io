@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>墨香</title>
+  
+  <subtitle>墨香</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://star936.github.io/"/>
+  <updated>2020-03-15T06:47:17.044Z</updated>
+  <id>http://star936.github.io/</id>
+  
+  <author>
+    <name>star936</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PySpark(二) 在IPython Notebook上使用Spark</title>
+    <link href="http://star936.github.io/2019/08/22/pyspark/pyspark_2/"/>
+    <id>http://star936.github.io/2019/08/22/pyspark/pyspark_2/</id>
+    <published>2019-08-22T22:22:22.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;上一篇博客: &lt;a href=&quot;https://star936.github.io/2019/08/21/pyspark/pyspark_1/&quot;&gt;PySpark(一): Hadoop SingleNode部署下Spark on
+        
+      
+    
+    </summary>
+    
+      <category term="PySpark" scheme="http://star936.github.io/categories/PySpark/"/>
+    
+    
+      <category term="PySpark" scheme="http://star936.github.io/tags/PySpark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PySpark(一) Hadoop SingleNode部署下Spark on yarn</title>
+    <link href="http://star936.github.io/2019/08/21/pyspark/pyspark_1/"/>
+    <id>http://star936.github.io/2019/08/21/pyspark/pyspark_1/</id>
+    <published>2019-08-21T23:24:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;环境: MacOX系统&lt;br&gt;     1. Java: 8&lt;br&gt;     2. Scala: 2.12.4&lt;br&gt;     3. Hadoop: 2.7.7&lt;br&gt;     4. Spark:
+        
+      
+    
+    </summary>
+    
+      <category term="PySpark" scheme="http://star936.github.io/categories/PySpark/"/>
+    
+    
+      <category term="PySpark" scheme="http://star936.github.io/tags/PySpark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python之Pipenv使用</title>
+    <link href="http://star936.github.io/2019/06/24/python/pipenv_usage/"/>
+    <id>http://star936.github.io/2019/06/24/python/pipenv_usage/</id>
+    <published>2019-06-24T15:39:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;工欲善其事,必先利其器.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Pipenv: Python Development Workflow for Humans&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1-安装&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://star936.github.io/categories/python/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Pipenv" scheme="http://star936.github.io/tags/Pipenv/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Travis CI自动化发布Hexo博客</title>
+    <link href="http://star936.github.io/2019/06/18/hexo_travis/"/>
+    <id>http://star936.github.io/2019/06/18/hexo_travis/</id>
+    <published>2019-06-18T22:00:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-Travis登陆&quot;&gt;&lt;a href=&quot;#1-Travis登陆&quot; class=&quot;headerlink&quot; title=&quot;1. Travis登陆&quot;&gt;&lt;/a&gt;1. Travis登陆&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;打开&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://star936.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="Hexo" scheme="http://star936.github.io/tags/Hexo/"/>
+    
+      <category term="Travis" scheme="http://star936.github.io/tags/Travis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Jenkins MultiBranch实现Docker build镜像并push到DockerHub</title>
+    <link href="http://star936.github.io/2018/12/30/spring/jenkins/"/>
+    <id>http://star936.github.io/2018/12/30/spring/jenkins/</id>
+    <published>2018-12-30T00:05:28.000Z</published>
+    <updated>2020-03-15T06:47:17.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;使用Docker部署Jenkins，并通过MultiBranch功能自动对项目进行打包并docker build和push。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-Docker部署Jenkins&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://star936.github.io/categories/Spring/"/>
+    
+    
+      <category term="Jenkins" scheme="http://star936.github.io/tags/Jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Dokcer+SpringCloud+Consul+Fabio搭建微服务</title>
+    <link href="http://star936.github.io/2018/12/21/spring/consul_fabio/"/>
+    <id>http://star936.github.io/2018/12/21/spring/consul_fabio/</id>
+    <published>2018-12-21T00:15:28.000Z</published>
+    <updated>2020-03-15T06:47:17.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;SpringBoot: 2.1.1&lt;br&gt;SpringCloud: Greenwich.M3&lt;br&gt;Consul: consul:1.3.0&lt;br&gt;Fabio:
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://star936.github.io/categories/Spring/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://star936.github.io/tags/SpringBoot/"/>
+    
+      <category term="Docker" scheme="http://star936.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Docker打包SpringBoot并Push到DockerHub</title>
+    <link href="http://star936.github.io/2018/12/20/spring/docker/"/>
+    <id>http://star936.github.io/2018/12/20/spring/docker/</id>
+    <published>2018-12-20T23:20:28.000Z</published>
+    <updated>2020-03-15T06:47:17.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;SpringBoot: 2.1.1&lt;br&gt;com.spotify.dockerfile-maven-plugin: 1.4.8&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-Docker打包&quot;&gt;&lt;a href=&quot;#1-Docker打包&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://star936.github.io/categories/Spring/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://star936.github.io/tags/SpringBoot/"/>
+    
+      <category term="Docker" scheme="http://star936.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring(一):IoC</title>
+    <link href="http://star936.github.io/2018/12/17/spring/ioc/"/>
+    <id>http://star936.github.io/2018/12/17/spring/ioc/</id>
+    <published>2018-12-17T00:15:28.000Z</published>
+    <updated>2020-03-15T06:47:17.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;SpringBoot: 2.1.1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-IoC简介&quot;&gt;&lt;a href=&quot;#1-IoC简介&quot; class=&quot;headerlink&quot; title=&quot;1. IoC简介&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://star936.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://star936.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FastJson的使用</title>
+    <link href="http://star936.github.io/2018/12/15/spring/fastjson/"/>
+    <id>http://star936.github.io/2018/12/15/spring/fastjson/</id>
+    <published>2018-12-15T23:20:28.000Z</published>
+    <updated>2020-03-15T06:47:17.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;Springboot: 2.1.1&lt;/p&gt;
+&lt;p&gt;FastJson:
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://star936.github.io/categories/Spring/"/>
+    
+    
+      <category term="fastjson" scheme="http://star936.github.io/tags/fastjson/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(七):URI strings</title>
+    <link href="http://star936.github.io/2018/12/05/blaze/uri_strings/"/>
+    <id>http://star936.github.io/2018/12/05/blaze/uri_strings/</id>
+    <published>2018-12-05T21:48:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Blaze使用strings指定数据源，使用时非常简单。&lt;/p&gt;
+&lt;h4 id=&quot;1-例子&quot;&gt;&lt;a href=&quot;#1-例子&quot; class=&quot;headerlink&quot; title=&quot;1. 例子&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(六):Pandas与Blaze比较</title>
+    <link href="http://star936.github.io/2018/12/05/blaze/compare_to_pandas/"/>
+    <id>http://star936.github.io/2018/12/05/blaze/compare_to_pandas/</id>
+    <published>2018-12-05T21:47:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;导入和构造&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;#
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(五):数据的分割-应用-组合-分组</title>
+    <link href="http://star936.github.io/2018/12/05/blaze/group/"/>
+    <id>http://star936.github.io/2018/12/05/blaze/group/</id>
+    <published>2018-12-05T21:46:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;em&gt;分组操作将一张表切分为多个块，并对每个块进行操作。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;以species分组，并对petal求平均值&lt;/em&gt;&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(四):基本查询</title>
+    <link href="http://star936.github.io/2018/12/04/blaze/basic_query/"/>
+    <id>http://star936.github.io/2018/12/04/blaze/basic_query/</id>
+    <published>2018-12-04T22:46:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;使用之前x下载的iris数据集CSV文件.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;该段代码以下所有示例都会使用到&lt;/em&gt;&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(三):快速入门</title>
+    <link href="http://star936.github.io/2018/12/04/blaze/quickstart/"/>
+    <id>http://star936.github.io/2018/12/04/blaze/quickstart/</id>
+    <published>2018-12-04T22:46:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;em&gt;该篇文章通过展示创建和操作Blaze Symbols快速入门。&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1-与数据的交互&quot;&gt;&lt;a href=&quot;#1-与数据的交互&quot; class=&quot;headerlink&quot; title=&quot;1. 与数据的交互&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(二):安装</title>
+    <link href="http://star936.github.io/2018/12/04/blaze/install/"/>
+    <id>http://star936.github.io/2018/12/04/blaze/install/</id>
+    <published>2018-12-04T20:56:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;conda方式&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;conda &lt;span class=&quot;token
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blaze(一):前言</title>
+    <link href="http://star936.github.io/2018/12/04/blaze/overview/"/>
+    <id>http://star936.github.io/2018/12/04/blaze/overview/</id>
+    <published>2018-12-04T20:55:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;em&gt;Blaze生态系统为python用户对大数据提供了高效计算的高层接口。主要由Anaconda赞助。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应用领域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Blaze整合了包括Python的Pandas、NumPy及SQL、Mong
+        
+      
+    
+    </summary>
+    
+      <category term="Blaze" scheme="http://star936.github.io/categories/Blaze/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Blaze" scheme="http://star936.github.io/tags/Blaze/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Psycopg2高效更新数据(二)</title>
+    <link href="http://star936.github.io/2018/12/03/python/python_psycopg_2/"/>
+    <id>http://star936.github.io/2018/12/03/python/python_psycopg_2/</id>
+    <published>2018-12-03T23:00:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;python: 3.7&lt;/p&gt;
+&lt;p&gt;pscopg2: 2.7&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;参考文档&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://star936.github.io/categories/python/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Psycopg2" scheme="http://star936.github.io/tags/Psycopg2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Psycopg2高效更新数据(一)</title>
+    <link href="http://star936.github.io/2018/11/30/python/python_psycopg_1/"/>
+    <id>http://star936.github.io/2018/11/30/python/python_psycopg_1/</id>
+    <published>2018-11-30T20:56:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;Python: 3.7&lt;/p&gt;
+&lt;p&gt;Psycopg:
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://star936.github.io/categories/python/"/>
+    
+    
+      <category term="Python" scheme="http://star936.github.io/tags/Python/"/>
+    
+      <category term="Psycopg2" scheme="http://star936.github.io/tags/Psycopg2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Elasticsearch(十一)利用logstash将mysql数据输出到ES</title>
+    <link href="http://star936.github.io/2018/11/29/es_logstash_jdbc/"/>
+    <id>http://star936.github.io/2018/11/29/es_logstash_jdbc/</id>
+    <published>2018-11-29T21:40:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;Elasticsearch: 6.4.2&lt;br&gt;Logstash:
+        
+      
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://star936.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="Elasticsearch" scheme="http://star936.github.io/tags/Elasticsearch/"/>
+    
+      <category term="Logstash" scheme="http://star936.github.io/tags/Logstash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Elasticsearch(十) Logstash入门</title>
+    <link href="http://star936.github.io/2018/11/28/es_logstash/"/>
+    <id>http://star936.github.io/2018/11/28/es_logstash/</id>
+    <published>2018-11-28T21:20:28.000Z</published>
+    <updated>2020-03-15T06:47:17.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;Logstash: 6.4.2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-配置语法&quot;&gt;&lt;a href=&quot;#1-配置语法&quot; class=&quot;headerlink&quot; title=&quot;1. 配置语法&quot;&gt;&lt;/a&gt;1. 配置语法&lt;/h3&gt;&lt;h4
+        
+      
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://star936.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="Elasticsearch、Logstash" scheme="http://star936.github.io/tags/Elasticsearch%E3%80%81Logstash/"/>
+    
+  </entry>
+  
+</feed>
